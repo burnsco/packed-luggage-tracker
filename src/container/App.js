@@ -1,32 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
+import Input from '../components/Input'
+import ListItem from '../components/ListItem'
 
-const Container = styled.div`
-  margin-top: 10px;
-  display: flex;
-  width: 60vw;
-  justify-content: space-between;
-  height: 30px;
-`
-const Input = styled.input`
-  border: 1px solid palevioletred;
-  padding: 0.2em;
-  width: 100%;
-`
-const Button = styled.button`
-  background: ${props => (props.primary ? 'palevioletred' : 'white')};
-  color: ${props => (props.primary ? 'white' : 'palevioletred')};
-  font-size: 0.6em;
-  border: 2px solid palevioletred;
-`
-const ListHeader = styled.h1`
+const ListHeader = styled.h2`
   font-size: 1.5em;
 `
-const App = () => (
-  <Container>
-    <Input />
-    <Button primary>Submit</Button>
-  </Container>
-)
+const MarkButton = styled.button`
+  margin-top: 20px;
+  background: palevioletred;
+  color: white;
+  width: 400px;
+  height: 30px;
+  border: 2px solid palevioletred;
+`
+class App extends Component {
+  state = {
+    input: '',
+    items: [{ id: 1, title: 'Pants', packed: false }]
+  }
+  render() {
+    return (
+      <>
+        <Input withButton />
+        <ListHeader>Unpacked Items (4)</ListHeader>
+        <Input />
+        <ListItem />
+        <ListHeader>Packed Items (2)</ListHeader>
+        <Input />
+        <ListItem />
+        <MarkButton>Mark All As Unpacked</MarkButton>
+      </>
+    )
+  }
+}
 
 export default App
