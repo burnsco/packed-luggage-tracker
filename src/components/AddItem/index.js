@@ -25,11 +25,11 @@ const Button = styled.button`
   border: 2px solid palevioletred;
 `
 
-const Input = ({ withButton }) => (
+const AddItem = ({ handleChange }) => (
   <Container>
     <CustomInput />
-    {withButton && <Button primary> SUBMIT </Button>}
+    <Button primary> SUBMIT </Button>
   </Container>
 )
 
-export default Input
+export default AddItem

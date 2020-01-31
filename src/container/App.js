@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Input from '../components/Input'
 import ListItem from '../components/ListItem'
+import AddItem from '../components/AddItem'
 
-const ListHeader = styled.h2`
-  font-size: 1.5em;
-`
 const MarkButton = styled.button`
   margin-top: 20px;
   background: palevioletred;
@@ -14,19 +12,36 @@ const MarkButton = styled.button`
   height: 30px;
   border: 2px solid palevioletred;
 `
-class App extends Component {
+class App extends React.Component {
   state = {
     input: '',
-    items: [{ id: 1, title: 'Pants', packed: false }]
+    items: [
+      { id: 1, title: 'Phone', packed: false },
+      { id: 2, title: 'Computer', packed: false },
+      { id: 3, title: 'Jeans', packed: false },
+      { id: 4, title: 'Toothbrush', packed: false },
+      { id: 5, title: 'Socks', packed: false },
+      { id: 6, title: 'Underwear', packed: false }
+    ]
+  }
+  handleChange = e => {
+    this.setState({ input: e.target.value })
+  }
+  handleSubmit = () => {
+    let items = [
+      ...this.state.items,
+      { id: this.state.items.length, title: this.state.input, packed: false }
+    ]
+    this.setState({ items })
   }
   render() {
     return (
       <>
-        <Input withButton />
-        <ListHeader>Unpacked Items (4)</ListHeader>
+        <AddItem />
+        <h2>Unpacked Items (4)</h2>
         <Input />
         <ListItem />
-        <ListHeader>Packed Items (2)</ListHeader>
+        <h2>Packed Items (2)</h2>
         <Input />
         <ListItem />
         <MarkButton>Mark All As Unpacked</MarkButton>

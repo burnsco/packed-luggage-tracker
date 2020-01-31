@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Button = styled.button`
+export const Button = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${props => (props.primary ? 'palevioletred' : 'white')};
   color: ${props => (props.primary ? 'white' : 'palevioletred')};
@@ -9,4 +9,11 @@ const Button = styled.button`
   border: 2px solid palevioletred;
 `
 
-export default Button
+export const FullButton = styled.button`
+  margin-top: 20px;
+  background: palevioletred;
+  color: white;
+  width: 400px;
+  height: 30px;
+  border: 2px solid palevioletred;
+`

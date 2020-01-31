@@ -5,6 +5,10 @@ const CustomHeader = styled.h1`
   font-size: 1.5em;
 `
 
-const Header = () => (
-  <>
+const ListHeader = ({ title, items }) => (
+  <CustomHeader>
+    {title} ({items})
+  </CustomHeader>
 )
+
+export default ListHeader
