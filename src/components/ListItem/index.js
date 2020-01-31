@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.label`
+const Container = styled.div`
   margin-top: 15px;
   display: block;
   position: relative;
@@ -19,14 +19,21 @@ const RemoveButton = styled.span`
   margin-left: 10px;
   font-size: 10px;
   color: red;
+  cursor: pointer;
 `
 
-const ListItem = () => {
+const ListItem = ({ title, removeItem, id, togglePacked, packed }) => {
   return (
     <Container>
-      <CheckBox type="checkbox" name="item" id="item" />
-      <Item>Pants</Item>
-      <RemoveButton>Remove</RemoveButton>
+      <CheckBox
+        onChange={() => togglePacked(id)}
+        value={packed}
+        type="checkbox"
+        name="packed"
+        id="packed"
+      />
+      <Item>{title}</Item>
+      <RemoveButton onClick={() => removeItem(id)}>Remove</RemoveButton>
     </Container>
   )
 }
