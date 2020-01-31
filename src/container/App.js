@@ -36,7 +36,7 @@ class App extends React.Component {
         packed: false
       }
     ]
-    this.setState({ items })
+    this.setState({ items: items, input: '' })
   }
   removeItem = id => {
     let items = [...this.state.items.filter(item => item.id !== id)]
@@ -61,6 +61,7 @@ class App extends React.Component {
     return (
       <>
         <AddItem
+          input={this.state.input}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />

@@ -25,9 +25,9 @@ const Button = styled.button`
   border: 2px solid palevioletred;
 `
 
-const AddItem = ({ handleChange, handleSubmit }) => (
+const AddItem = ({ handleChange, handleSubmit, input }) => (
   <Container>
-    <CustomInput onChange={e => handleChange(e)} />
+    <CustomInput value={input} onChange={e => handleChange(e)} />
     <Button primary onClick={() => handleSubmit()}>
       {' '}
       SUBMIT{' '}
