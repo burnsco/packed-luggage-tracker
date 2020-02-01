@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Input from '../../components/Input'
 import ListItem from '../../components/ListItem'
 import ListHeader from '../../components/ListHeader'
+import CheckBox from '../../components/CheckBox'
 
 const List = ({ unpackedItems, packedItems, removeItem, togglePacked }) => {
   return (

@@ -25,9 +25,9 @@ const Button = styled.button`
   border: 2px solid palevioletred;
 `
 
-const Input = ({ withButton, filterOne, handleChange }) => (
+const Input = ({ withButton, handleChange }) => (
   <Container>
-    <CustomInput value={filterOne} onChange={() => handleChange} />
+    <CustomInput />
     {withButton && <Button primary> SUBMIT </Button>}
   </Container>
 )

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import AddItem from '../components/AddItem'
 import List from '../container/List'
+import Counter from '../components/Counter'
 
 const MarkButton = styled.button`
   margin-top: 20px;
@@ -14,8 +15,6 @@ const MarkButton = styled.button`
 class App extends React.Component {
   state = {
     input: '',
-    filterOne: '',
-    filterTwo: '',
     items: [
       { id: 1, title: 'Phone', packed: false },
       { id: 2, title: 'Computer', packed: false },
@@ -67,6 +66,7 @@ class App extends React.Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
+        <Counter />
         <List
           packedItems={packedItems}
           unpackedItems={unpackedItems}
