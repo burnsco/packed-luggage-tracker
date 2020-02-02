@@ -26,7 +26,6 @@ const Counter = () => {
       if (totalSeconds !== 0) {
         setTotalSeconds(totalSeconds - 1)
       }
-      if (totalSeconds === 0) alert('your ride is here!')
     }
 
     let intervalTimer = setInterval(() => tick(), 1000)

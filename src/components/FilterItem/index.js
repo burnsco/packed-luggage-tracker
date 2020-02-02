@@ -18,9 +18,9 @@ const CustomInput = styled.input`
   }
 `
 
-const FilterItem = ({ handleChange }) => (
+const FilterItem = ({ handleChange, value }) => (
   <Container>
-    <CustomInput />
+    <CustomInput onChange={e => handleChange(e)} value={value} />
   </Container>
 )
 

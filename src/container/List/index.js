@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
-import Input from '../../components/Input'
 import ListItem from '../../components/ListItem'
 import ListHeader from '../../components/ListHeader'
+import FilterItem from '../../components/FilterItem'
 
 const List = ({ unpackedItems, packedItems, removeItem, togglePacked }) => {
   const [filterOne, setFilterOne] = useState('')
   const [filterTwo, setFilterTwo] = useState('')
+  const handleOne = e => setFilterOne(e.target.value)
+  const handleTwo = e => setFilterTwo(e.target.value)
+  let filteredUnpackedItems = unpackedItems.filter(item =>
+    item.title.toLowerCase().includes(filterOne.toLowerCase())
+  )
+  let filteredPackedItems = packedItems.filter(item =>
+    item.title.toLowerCase().includes(filterTwo.toLowerCase())
+  )
 
   return (
     <>
       <ListHeader title="Unpacked Items" items={unpackedItems.length} />
-      <Input />
-      {unpackedItems.map(item => (
+      <FilterItem handleChange={handleOne} value={filterOne} />
+      {filteredUnpackedItems.map(item => (
         <ListItem
           title={item.title}
           key={item.id}
@@ -22,8 +30,8 @@ const List = ({ unpackedItems, packedItems, removeItem, togglePacked }) => {
         />
       ))}
       <ListHeader title="Packed Items" items={packedItems.length} />
-      <Input />
-      {packedItems.map(item => (
+      <FilterItem handleChange={handleTwo} value={filterTwo} />
+      {filteredPackedItems.map(item => (
         <ListItem
           title={item.title}
           key={item.id}
