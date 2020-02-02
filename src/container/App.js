@@ -29,15 +29,17 @@ class App extends React.Component {
     this.setState({ input: e.target.value })
   }
   handleSubmit = () => {
-    let items = [
-      ...this.state.items,
-      {
-        id: this.state.items.length + 1,
-        title: this.state.input,
-        packed: false
-      }
-    ]
-    this.setState({ items: items, input: '' })
+    if (this.state.input !== '') {
+      let items = [
+        ...this.state.items,
+        {
+          id: this.state.items.length + 1,
+          title: this.state.input,
+          packed: false
+        }
+      ]
+      this.setState({ items: items, input: '' })
+    }
   }
   removeItem = id => {
     let items = [...this.state.items.filter(item => item.id !== id)]

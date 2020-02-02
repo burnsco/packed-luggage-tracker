@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import CheckBox from '../../components/CheckBox'
 
 const Container = styled.div`
-  margin-top: 10px;
+  margin-top: 5px;
   display: block;
   position: relative;
 `
