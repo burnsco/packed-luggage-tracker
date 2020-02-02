@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -11,46 +11,39 @@ const Container = styled.div`
 `
 const Timer = styled.div`
   border: none;
-
   padding: 0.2em;
   width: 100%;
-
   &:focus {
     border: none;
   }
 `
 
-class Counter extends React.Component {
-  state = {
-    minutes: 8,
-    seconds: 59
-  }
+const Counter = () => {
+  const [totalSeconds, setTotalSeconds] = useState(480)
 
-  componentDidMount() {
-    this.myInterval = setInterval(() => {
-      this.setState(state => ({ count: state.count - 1 }))
-    }, 1000)
-  }
+  useEffect(() => {
+    const tick = () => {
+      if (totalSeconds !== 0) {
+        setTotalSeconds(totalSeconds - 1)
+      }
+      if (totalSeconds === 0) alert('your ride is here!')
+    }
 
-  componentWillUnmount() {
-    clearInterval(this.myInterval)
-  }
+    let intervalTimer = setInterval(() => tick(), 1000)
 
-  // 1) seconds total -> divide into minutes and seconds
-  // 2) minutes and seconds separate
+    return () => {
+      clearInterval(intervalTimer)
+    }
+  })
 
-  render() {
-    let minutes = this.state.count / 60
-    let seconds = this.state.count / 1000
-    return (
-      <Container>
-        <Timer>
-          The Lyft will be here in about {this.state.minutes} minute(s) and{' '}
-          {this.state.seconds} second(s)
-        </Timer>
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <Timer>
+        The Lyft will be here in about {Math.floor(totalSeconds / 60)} minute(s)
+        and {Math.floor(totalSeconds % 60)} second(s)
+      </Timer>
+    </Container>
+  )
 }
 
 export default Counter
