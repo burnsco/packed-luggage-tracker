@@ -1,18 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import AddItem from '../components/AddItem'
-import List from '../container/List'
-import Counter from '../components/Counter'
+import React, { Component } from 'react'
+import LuggageTracker from './LuggageTracker'
 
-const MarkButton = styled.button`
-  margin-top: 20px;
-  background: palevioletred;
-  color: white;
-  width: 400px;
-  height: 30px;
-  border: 2px solid palevioletred;
-`
-class App extends React.Component {
+class App extends Component {
   state = {
     input: '',
     items: [
@@ -62,23 +51,16 @@ class App extends React.Component {
     let packedItems = this.state.items.filter(item => item.packed)
 
     return (
-      <>
-        <AddItem
-          input={this.state.input}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
-        <Counter />
-        <List
-          packedItems={packedItems}
-          unpackedItems={unpackedItems}
-          removeItem={this.removeItem}
-          togglePacked={this.togglePacked}
-        />
-        <MarkButton onClick={() => this.toggleAll()}>
-          Mark All As Unpacked
-        </MarkButton>
-      </>
+      <LuggageTracker
+        input={this.state.input}
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        packedItems={packedItems}
+        unpackedItems={unpackedItems}
+        removeItem={this.removeItem}
+        togglePacked={this.togglePacked}
+        toggleAll={this.toggleAll}
+      />
     )
   }
 }
