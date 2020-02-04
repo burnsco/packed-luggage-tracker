@@ -14,7 +14,6 @@ const MarkButton = styled.button`
   height: 30px;
   border: 2px solid palevioletred;
 `
-
 const LuggageTracker = ({
   unpackedItems,
   packedItems,
@@ -27,11 +26,14 @@ const LuggageTracker = ({
 }) => {
   const [filterOne, setFilterOne] = useState('')
   const [filterTwo, setFilterTwo] = useState('')
+
   const handleOne = e => setFilterOne(e.target.value)
   const handleTwo = e => setFilterTwo(e.target.value)
+
   let filteredUnpackedItems = unpackedItems.filter(item =>
     item.title.toLowerCase().includes(filterOne.toLowerCase())
   )
+  
   let filteredPackedItems = packedItems.filter(item =>
     item.title.toLowerCase().includes(filterTwo.toLowerCase())
   )
