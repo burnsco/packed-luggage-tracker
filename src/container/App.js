@@ -13,7 +13,6 @@ class App extends Component {
       { id: 6, title: 'Underwear', packed: false }
     ]
   }
-
   handleChange = e => {
     this.setState({ input: e.target.value })
   }

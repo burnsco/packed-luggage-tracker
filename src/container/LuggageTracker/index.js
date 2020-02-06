@@ -33,7 +33,7 @@ const LuggageTracker = ({
   let filteredUnpackedItems = unpackedItems.filter(item =>
     item.title.toLowerCase().includes(filterOne.toLowerCase())
   )
-  
+
   let filteredPackedItems = packedItems.filter(item =>
     item.title.toLowerCase().includes(filterTwo.toLowerCase())
   )
