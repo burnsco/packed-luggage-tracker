@@ -1,19 +1,13 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {createStructuredSelector} from 'reselect'
+import {MarkAllButton} from '../../components/MarkAllButton'
 import ListItem from '../../components/ListItem'
 import ListHeader from '../../components/ListHeader'
 import FilterItem from '../../components/FilterItem'
 import AddItem from '../../components/AddItem'
 import Counter from '../../components/Counter'
 
-const MarkButton = styled.button`
-  margin-top: 20px;
-  background: palevioletred;
-  color: white;
-  width: 400px;
-  height: 30px;
-  border: 2px solid palevioletred;
-`
 const LuggageTracker = ({
   unpackedItems,
   packedItems,
@@ -70,9 +64,19 @@ const LuggageTracker = ({
           id={item.id}
         />
       ))}
-      <MarkButton onClick={() => toggleAll()}>Mark All As Unpacked</MarkButton>
+      <MarkAllButton onClick={() => toggleAll()}>
+        Mark All As Unpacked
+      </MarkAllButton>
     </>
   )
 }
+const mapDispatchToProps = createStructuredSelector({
+  addItem: () => test,
+  removeItem: () => test,
+  togglePacked: () => test,
+  toggleAllPacked: () => test
+})
 
-export default LuggageTracker
+const mapStateToProps = createStructuredSelector({})
+
+export default connect(mapDispatchToProps, mapStateToProps)(LuggageTracker)
