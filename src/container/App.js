@@ -1,15 +1,8 @@
 import React from 'react'
 import LuggageTracker from './LuggageTracker'
+import uuidv1 from 'uuid/v1'
 import { useState } from 'react'
-
-let INITIAL_STATE = [
-  { id: 1, title: 'Phone', packed: false },
-  { id: 2, title: 'Computer', packed: false },
-  { id: 3, title: 'Jeans', packed: true },
-  { id: 4, title: 'Toothbrush', packed: false },
-  { id: 5, title: 'Socks', packed: true },
-  { id: 6, title: 'Underwear', packed: false }
-]
+import { INITIAL_STATE } from '../data'
 
 function App() {
   const [input, setInput] = useState('')
@@ -23,7 +16,7 @@ function App() {
       let itemz = [
         ...items,
         {
-          id: items.length + 1,
+          id: uuidv1(),
           title: input,
           packed: false
         }
@@ -43,7 +36,7 @@ function App() {
     setItems(itemz)
   }
   const toggleAll = () => {
-    let itemz = [...this.state.items]
+    let itemz = [...items]
     items.forEach(item => (item.packed = false))
     setItems(itemz)
   }
