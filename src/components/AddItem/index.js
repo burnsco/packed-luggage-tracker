@@ -6,6 +6,7 @@ import { addItemToList } from '../../redux/actions/index.js'
 const AddItem = ({ addItemToList }) => {
   const [input, setInput] = useState('')
   const handleChange = e => setInput(e.target.value)
+
   return (
     <Container>
       <CustomInput value={input} onChange={e => handleChange(e)} />
