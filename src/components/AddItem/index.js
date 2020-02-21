@@ -10,7 +10,13 @@ const AddItem = ({ addItemToList }) => {
   return (
     <Container>
       <CustomInput value={input} onChange={e => handleChange(e)} />
-      <Button primary onClick={() => addItemToList(input)}>
+      <Button
+        primary
+        onClick={() => {
+          addItemToList(input)
+          setInput('')
+        }}
+      >
         {' '}
         SUBMIT{' '}
       </Button>
@@ -22,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
   addItemToList: input => dispatch(addItemToList(input))
 })
 
-export default React.memo(connect(null, mapDispatchToProps)(AddItem))
+export default connect(null, mapDispatchToProps)(AddItem)
