@@ -1,67 +1,68 @@
-import React, { Component } from 'react'
+import React from 'react'
 import LuggageTracker from './LuggageTracker'
+import { useState } from 'react'
 
-class App extends Component {
-  state = {
-    input: '',
-    items: [
-      { id: 1, title: 'Phone', packed: false },
-      { id: 2, title: 'Computer', packed: false },
-      { id: 3, title: 'Jeans', packed: true },
-      { id: 4, title: 'Toothbrush', packed: false },
-      { id: 5, title: 'Socks', packed: true },
-      { id: 6, title: 'Underwear', packed: false }
-    ]
+let INITIAL_STATE = [
+  { id: 1, title: 'Phone', packed: false },
+  { id: 2, title: 'Computer', packed: false },
+  { id: 3, title: 'Jeans', packed: true },
+  { id: 4, title: 'Toothbrush', packed: false },
+  { id: 5, title: 'Socks', packed: true },
+  { id: 6, title: 'Underwear', packed: false }
+]
+
+function App() {
+  const [input, setInput] = useState('')
+  const [items, setItems] = useState(INITIAL_STATE)
+
+  const handleChange = e => {
+    setInput(e.target.value)
   }
-  handleChange = e => {
-    this.setState({ input: e.target.value })
-  }
-  handleSubmit = () => {
-    if (this.state.input !== '') {
-      let items = [
-        ...this.state.items,
+  const handleSubmit = () => {
+    if (input !== '') {
+      let itemz = [
+        ...items,
         {
-          id: this.state.items.length + 1,
-          title: this.state.input,
+          id: items.length + 1,
+          title: input,
           packed: false
         }
       ]
-      this.setState({ items: items, input: '' })
+      setInput('')
+      setItems(itemz)
     }
   }
-  removeItem = id => {
-    let items = [...this.state.items.filter(item => item.id !== id)]
-    this.setState({ items })
+  const removeItem = id => {
+    let itemz = [...items.filter(item => item.id !== id)]
+    setItems(itemz)
   }
-  togglePacked = id => {
-    let items = [...this.state.items]
+  const togglePacked = id => {
+    let itemz = [...items]
     let index = items.findIndex(item => item.id === id)
     items[index].packed = !items[index].packed
-    this.setState({ items })
+    setItems(itemz)
   }
-  toggleAll = () => {
-    let items = [...this.state.items]
+  const toggleAll = () => {
+    let itemz = [...this.state.items]
     items.forEach(item => (item.packed = false))
-    this.setState({ items })
+    setItems(itemz)
   }
 
-  render() {
-    let unpackedItems = this.state.items.filter(item => !item.packed)
-    let packedItems = this.state.items.filter(item => item.packed)
+  let unpackedItems = items.filter(item => !item.packed)
+  let packedItems = items.filter(item => item.packed)
 
-    return (
-      <LuggageTracker
-        input={this.state.input}
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        packedItems={packedItems}
-        unpackedItems={unpackedItems}
-        removeItem={this.removeItem}
-        togglePacked={this.togglePacked}
-        toggleAll={this.toggleAll}
-      />
-    )
-  }
+  return (
+    <LuggageTracker
+      input={input}
+      handleSubmit={handleSubmit}
+      handleChange={handleChange}
+      packedItems={packedItems}
+      unpackedItems={unpackedItems}
+      removeItem={removeItem}
+      togglePacked={togglePacked}
+      toggleAll={toggleAll}
+    />
+  )
 }
 
 export default App
