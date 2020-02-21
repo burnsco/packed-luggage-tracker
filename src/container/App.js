@@ -55,10 +55,23 @@ function App() {
     dispatchFilter({ type: 'SHOW_INCOMPLETE' })
   }
 
+  const filteredItems = items.filter(todo => {
+    if (filter === 'ALL') {
+      return true
+    }
+    if (filter === 'COMPLETE' && todo.complete) {
+      return true
+    }
+    if (filter === 'INCOMPLETE' && !todo.complete) {
+      return true
+    }
+    return false
+  })
+
   return (
     <TodoList
       input={input}
-      items={items}
+      items={filteredItems}
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       removeItem={removeItem}

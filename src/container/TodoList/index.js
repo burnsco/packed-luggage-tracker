@@ -10,6 +10,9 @@ const LuggageTracker = ({
   toggleComplete,
   input,
   handleSubmit,
+  handleShowAll,
+  handleShowComplete,
+  handleShowIncomplete,
   handleChange,
   toggleAll
 }) => {
@@ -25,25 +28,25 @@ const LuggageTracker = ({
         <ListItem
           title={item.title}
           key={item.id}
-          packed={item.packed}
+          complete={item.complete}
           toggleComplete={toggleComplete}
           removeItem={removeItem}
           id={item.id}
         />
       ))}
       <ButtonContainer>
-        <MarkButton onClick={() => toggleAll()}>Incomplete</MarkButton>
+        <MarkButton onClick={() => handleShowAll()}>All</MarkButton>
         <MarkButton
           style={{ marginLeft: 20 + 'px' }}
-          onClick={() => toggleAll()}
+          onClick={() => handleShowComplete()}
         >
           Complete
         </MarkButton>
         <MarkButton
           style={{ marginLeft: 20 + 'px' }}
-          onClick={() => toggleAll()}
+          onClick={() => handleShowIncomplete()}
         >
-          All
+          Incomplete
         </MarkButton>
       </ButtonContainer>
     </Container>

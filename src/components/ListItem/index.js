@@ -25,7 +25,7 @@ const ListItem = ({ title, removeItem, id, toggleComplete, complete }) => {
         toggleComplete={toggleComplete}
         complete={complete}
         type="checkbox"
-        name="packed"
+        name="complete"
         id={id}
       />
       <Item>{title}</Item>
