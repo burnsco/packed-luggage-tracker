@@ -18,12 +18,12 @@ const RemoveButton = styled.span`
   cursor: pointer;
 `
 
-const ListItem = ({ title, removeItem, id, togglePacked, packed }) => {
+const ListItem = ({ title, removeItem, id, toggleComplete, complete }) => {
   return (
     <Container>
       <CheckBox
-        togglePacked={togglePacked}
-        packed={packed}
+        toggleComplete={toggleComplete}
+        complete={complete}
         type="checkbox"
         name="packed"
         id={id}

@@ -5,7 +5,7 @@ const Container = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: 100%;
   height: 30px;
 `
 const CustomInput = styled.input`

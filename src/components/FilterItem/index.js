@@ -9,7 +9,7 @@ const Container = styled.div`
   height: 30px;
 `
 const CustomInput = styled.input`
-  border: none;
+  border: 1px solid grey;
   background: papayawhip;
   padding: 0.2em;
   width: 100%;

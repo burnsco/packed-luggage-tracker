@@ -43,20 +43,20 @@ const StyledCheckbox = styled.div`
   }
 `
 
-const Checkbox = ({ packed, togglePacked, value, id }) => (
+const Checkbox = ({ complete, toggleComplete, value, id }) => (
   <label>
     <CheckboxContainer>
       <HiddenCheckbox
-        onChange={() => togglePacked(id)}
-        checked={packed}
-        name="packed"
-        value={packed}
+        onChange={() => toggleComplete(id)}
+        checked={complete}
+        name="complete"
+        value={complete}
       />
       <StyledCheckbox
-        onChange={() => togglePacked(id)}
-        checked={packed}
-        name="packed"
-        value={packed}
+        onChange={() => toggleComplete(id)}
+        checked={complete}
+        name="complete"
+        value={complete}
       >
         <Icon viewBox="0 0 24 24">
           <polyline points="20 6 9 17 4 12" />
