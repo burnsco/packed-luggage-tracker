@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
   togglePacked: item => dispatch(toggleItem(item))
 })
 
-export default connect(null, mapDispatchToProps)(ListItem)
+export default React.memo(connect(null, mapDispatchToProps)(ListItem))

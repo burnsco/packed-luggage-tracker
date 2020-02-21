@@ -13,7 +13,7 @@ const AddItem = ({ addItemToList }) => {
       <Button
         primary
         onClick={() => {
-          addItemToList(input)
+          if (input.length > 0) addItemToList(input)
           setInput('')
         }}
       >

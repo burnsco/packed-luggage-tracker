@@ -1,13 +1,14 @@
 import ItemActionTypes from '../constants'
+import { uniqueId } from 'lodash'
 
 const INITIAL_STATE = {
   items: [
-    { id: 1, title: 'Phone', packed: false },
-    { id: 2, title: 'Computer', packed: false },
-    { id: 3, title: 'Jeans', packed: true },
-    { id: 4, title: 'Toothbrush', packed: false },
-    { id: 5, title: 'Socks', packed: true },
-    { id: 6, title: 'Underwear', packed: false }
+    { id: uniqueId(), title: 'Phone', packed: false },
+    { id: uniqueId(), title: 'Computer', packed: false },
+    { id: uniqueId(), title: 'Jeans', packed: true },
+    { id: uniqueId(), title: 'Toothbrush', packed: false },
+    { id: uniqueId(), title: 'Socks', packed: true },
+    { id: uniqueId(), title: 'Underwear', packed: false }
   ]
 }
 
@@ -17,7 +18,7 @@ const itemReducer = (state = INITIAL_STATE, action) => {
       return {
         items: [
           ...state.items,
-          { id: state.items.length + 1, title: action.title, packed: false }
+          { id: uniqueId(), title: action.title, packed: false }
         ]
       }
 

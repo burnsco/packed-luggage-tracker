@@ -11,4 +11,4 @@ const ListHeader = ({ title, count }) => (
   </CustomHeader>
 )
 
-export default ListHeader
+export default React.memo(ListHeader)
