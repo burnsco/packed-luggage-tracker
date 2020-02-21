@@ -1,3 +1,5 @@
+import ItemActionTypes from '../constants'
+
 const INITIAL_STATE = {
   items: [
     { id: 1, title: 'Phone', packed: false },
@@ -11,13 +13,34 @@ const INITIAL_STATE = {
 
 const itemReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case ItemActionTypes.ADD_ITEM:
+      return {
+        items: [
+          ...state.items,
+          { id: state.items.length + 1, title: action.title, packed: false }
+        ]
+      }
+
+    case ItemActionTypes.REMOVE_ITEM:
       return {
         ...state,
-        items: [
-          ...state,
-          { id: state.items.length + 1, title: action.payload, packed: false }
-        ]
+        items: state.items.filter(item => item.id !== action.id)
+      }
+
+    case ItemActionTypes.TOGGLE_ITEM:
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === action.id ? { ...item, packed: !item.packed } : item
+        )
+      }
+
+    case ItemActionTypes.TOGGLE_ITEMS:
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.packed === true ? { ...item, packed: false } : item
+        )
       }
 
     default:

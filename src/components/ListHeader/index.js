@@ -5,9 +5,9 @@ const CustomHeader = styled.h1`
   font-size: 1.5em;
 `
 
-const ListHeader = ({ title, items }) => (
+const ListHeader = ({ title, count }) => (
   <CustomHeader>
-    {title} ({items})
+    {title} ({count})
   </CustomHeader>
 )
 

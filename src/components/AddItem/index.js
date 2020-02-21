@@ -1,45 +1,24 @@
-import React from 'react'
-import styled from 'styled-components'
-
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { addItemToList } from '../../redux/actions'
+import { Container, Button, CustomInput } from './styles.js'
+import { addItemToList } from '../../redux/actions/index.js'
 
-const Container = styled.div`
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
-  height: 30px;
-`
-const CustomInput = styled.input`
-  border: none;
-  background: papayawhip;
-  padding: 0.2em;
-  width: 100%;
-
-  &:focus {
-    border: none;
-  }
-`
-const Button = styled.button`
-  background: ${props => (props.primary ? 'palevioletred' : 'white')};
-  color: ${props => (props.primary ? 'white' : 'palevioletred')};
-  font-size: 0.8em;
-  border: 2px solid palevioletred;
-`
-
-const AddItem = ({ handleChange, handleSubmit, input, item }) => (
-  <Container>
-    <CustomInput value={input} onChange={e => handleChange(e)} />
-    <Button primary onClick={() => addItemToList(item)}>
-      {' '}
-      SUBMIT{' '}
-    </Button>
-  </Container>
-)
+const AddItem = ({ addItemToList }) => {
+  const [input, setInput] = useState('')
+  const handleChange = e => setInput(e.target.value)
+  return (
+    <Container>
+      <CustomInput value={input} onChange={e => handleChange(e)} />
+      <Button primary onClick={() => addItemToList(input)}>
+        {' '}
+        SUBMIT{' '}
+      </Button>
+    </Container>
+  )
+}
 
 const mapDispatchToProps = dispatch => ({
-  addItemToList: item => dispatch(addItemToList(item))
+  addItemToList: input => dispatch(addItemToList(input))
 })
 
-export default connect(null, mapDispatchToProps)(AddItem)
+export default React.memo(connect(null, mapDispatchToProps)(AddItem))

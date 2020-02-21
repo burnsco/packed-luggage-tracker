@@ -1,24 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import { connect } from 'react-redux'
 import CheckBox from '../../components/CheckBox'
+import { removeItemFromList, toggleItem } from '../../redux/actions'
+import { Container, Item, RemoveButton } from './styles'
 
-const Container = styled.div`
-  margin-top: 5px;
-  display: block;
-  position: relative;
-`
-const Item = styled.span`
-  font-size: 14px;
-  margin-left: 8px;
-`
-const RemoveButton = styled.span`
-  margin-left: 10px;
-  font-size: 10px;
-  color: red;
-  cursor: pointer;
-`
-
-const ListItem = ({ title, removeItem, id, togglePacked, packed }) => {
+const ListItem = ({
+  removeItem,
+  togglePacked,
+  item: { title, id, packed }
+}) => {
   return (
     <Container>
       <CheckBox
@@ -34,4 +24,9 @@ const ListItem = ({ title, removeItem, id, togglePacked, packed }) => {
   )
 }
 
-export default ListItem
+const mapDispatchToProps = dispatch => ({
+  removeItem: id => dispatch(removeItemFromList(id)),
+  togglePacked: item => dispatch(toggleItem(item))
+})
+
+export default connect(null, mapDispatchToProps)(ListItem)
