@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import AddItem from '../components/AddItem'
 import List from '../container/List'
 import Counter from '../components/Counter'
+import { uniqueId } from 'lodash'
 
 const MarkButton = styled.button`
   margin-top: 20px;
@@ -33,7 +34,7 @@ class App extends React.Component {
       let items = [
         ...this.state.items,
         {
-          id: this.state.items.length + 1,
+          id: uniqueId(),
           title: this.state.input,
           packed: false
         }
